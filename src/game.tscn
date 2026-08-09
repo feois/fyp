@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://tah2mxs41ybe"]
+
+[ext_resource type="PackedScene" uid="uid://6dxbqc1y6tth" path="res://src/game/world.tscn" id="1_3msxb"]
+[ext_resource type="PackedScene" uid="uid://cucrtqu3mj8ju" path="res://src/ui/ui.tscn" id="1_7uq6d"]
+[ext_resource type="Script" uid="uid://ffacyillwqwi" path="res://src/game/category.gd" id="2_bs6l1"]
+[ext_resource type="Texture2D" uid="uid://bmhklmu6hj52g" path="res://src/game/objects/zones/zones.png" id="5_4bcji"]
+[ext_resource type="PackedScene" uid="uid://sd1iqqpkvdw" path="res://src/game/objects/zones/residential_zone.tscn" id="5_cdx1q"]
+[ext_resource type="Texture2D" uid="uid://dk0q1oleewd7o" path="res://src/game/objects/roads/road.png" id="5_wqvko"]
+[ext_resource type="PackedScene" uid="uid://vs6t8pc4c5xc" path="res://src/game/objects/zones/industrial_zone.tscn" id="6_4bcji"]
+[ext_resource type="PackedScene" uid="uid://v2bibyw4f6wj" path="res://src/game/objects/roads/road.tscn" id="6_cdx1q"]
+[ext_resource type="PackedScene" uid="uid://6r5patqt4slt" path="res://src/game/objects/zones/commercial_zone.tscn" id="7_uktfx"]
+[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/game/objects/power/power.png" id="9_qiocs"]
+[ext_resource type="PackedScene" uid="uid://ctu8osqp2mqxt" path="res://src/game/objects/power/coal_plant.tscn" id="10_xdrfk"]
+[ext_resource type="PackedScene" uid="uid://ckn47ieav0bvd" path="res://src/game/objects/power/wind_turbine.tscn" id="11_g3j30"]
+[ext_resource type="Texture2D" uid="uid://bni6myhf3crj8" path="res://src/game/objects/water/water.png" id="12_g3j30"]
+[ext_resource type="PackedScene" uid="uid://cbt8wjiiatcyi" path="res://src/game/objects/water/well.tscn" id="13_a7soy"]
+
+[sub_resource type="Resource" id="Resource_1hnva"]
+script = ExtResource("2_bs6l1")
+name = &"Road"
+icon = ExtResource("5_wqvko")
+objects = Array[PackedScene]([ExtResource("6_cdx1q")])
+metadata/_custom_type_script = "uid://ffacyillwqwi"
+
+[sub_resource type="Resource" id="Resource_y2hwx"]
+script = ExtResource("2_bs6l1")
+name = &"Zones"
+icon = ExtResource("5_4bcji")
+objects = Array[PackedScene]([ExtResource("5_cdx1q"), ExtResource("6_4bcji"), ExtResource("7_uktfx")])
+metadata/_custom_type_script = "uid://ffacyillwqwi"
+
+[sub_resource type="Resource" id="Resource_a7soy"]
+script = ExtResource("2_bs6l1")
+name = &"Power"
+icon = ExtResource("9_qiocs")
+objects = Array[PackedScene]([ExtResource("10_xdrfk"), ExtResource("11_g3j30")])
+metadata/_custom_type_script = "uid://ffacyillwqwi"
+
+[sub_resource type="Resource" id="Resource_aikvj"]
+script = ExtResource("2_bs6l1")
+name = &"Water Supply"
+icon = ExtResource("12_g3j30")
+objects = Array[PackedScene]([ExtResource("13_a7soy")])
+metadata/_custom_type_script = "uid://ffacyillwqwi"
+
+[node name="Game" type="Node" unique_id=101771732]
+
+[node name="World" parent="." unique_id=1331461221 node_paths=PackedStringArray("ui") instance=ExtResource("1_3msxb")]
+categories = Array[ExtResource("2_bs6l1")]([SubResource("Resource_1hnva"), SubResource("Resource_y2hwx"), SubResource("Resource_a7soy"), SubResource("Resource_aikvj")])
+ui = NodePath("../CanvasLayer/UI")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=60308129]
+
+[node name="UI" parent="CanvasLayer" unique_id=1524788064 node_paths=PackedStringArray("world") instance=ExtResource("1_7uq6d")]
+offset_top = 0.0
+offset_bottom = 0.0
+world = NodePath("../../World")

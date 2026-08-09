@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://wumdltnig4qd"]
+
+[ext_resource type="Script" uid="uid://v7wtkr3mgvoh" path="res://src/ui/category_tab.gd" id="1_nrg17"]
+[ext_resource type="Texture2D" uid="uid://2tq0ihiv66sd" path="res://icon.svg" id="1_w8a5h"]
+[ext_resource type="ButtonGroup" uid="uid://fuqpwei4fbx5" path="res://src/ui/category_group.tres" id="2_wvwm1"]
+
+[node name="Category" type="MarginContainer" unique_id=2036360430]
+script = ExtResource("1_nrg17")
+animation = 0.2
+
+[node name="Button" type="Button" parent="." unique_id=1385751603]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_wvwm1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1414804571]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1789122728]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=900034696]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_w8a5h")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Content" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1057501247]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/Content" unique_id=97109969]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b1lvyjiub1m0x"]
+
+[ext_resource type="Script" uid="uid://c5ivwdhqpwsb1" path="res://src/ui/object_selector.gd" id="1_ycann"]
+[ext_resource type="ButtonGroup" uid="uid://c2yyqglysat83" path="res://src/ui/object_group.tres" id="2_yasy2"]
+
+[node name="ObjectSelector" type="MarginContainer" unique_id=1539060543]
+script = ExtResource("1_ycann")
+
+[node name="Button" type="Button" parent="." unique_id=519845839]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_yasy2")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1524177900]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1672199448]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=140170987]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=212071116]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=44079766]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Price" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=950303121]
+unique_name_in_owner = true
+layout_mode = 2

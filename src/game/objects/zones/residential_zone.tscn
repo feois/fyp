@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://sd1iqqpkvdw"]
+
+[ext_resource type="PackedScene" uid="uid://bps5var4p67cl" path="res://src/game/objects/zones/zone.tscn" id="1_qxtin"]
+[ext_resource type="Script" uid="uid://dkqdwvunhb1e2" path="res://src/game/objects/zones/residential_zone.gd" id="2_2k7gq"]
+[ext_resource type="Texture2D" uid="uid://d4f4wi2idyn25" path="res://src/game/objects/zones/residential.png" id="3_qxtin"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_koiyr"]
+albedo_color = Color(0, 1, 0, 0.49803922)
+
+[node name="ResidentialZone" unique_id=1628805497 instance=ExtResource("1_qxtin")]
+script = ExtResource("2_2k7gq")
+material = SubResource("StandardMaterial3D_koiyr")
+object_name = &"Residential Zone"
+object_icon = ExtResource("3_qxtin")

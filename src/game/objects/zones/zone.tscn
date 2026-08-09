@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bps5var4p67cl"]
+
+[ext_resource type="PackedScene" uid="uid://bi3dplv4y45cb" path="res://src/game/objects/game_object.tscn" id="1_w31ld"]
+[ext_resource type="Script" uid="uid://cv8y6s67edaku" path="res://src/game/objects/zones/zone.gd" id="2_yf38l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_33ve0"]
+size = Vector3(1, 0.5, 1)
+
+[node name="Zone" unique_id=1628805497 instance=ExtResource("1_w31ld")]
+script = ExtResource("2_yf38l")
+material = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=1080773270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_33ve0")
