@@ -12,7 +12,7 @@ size = Vector3(1, 0.01, 1)
 
 [node name="Road" unique_id=1628805497 node_paths=PackedStringArray("meshes") instance=ExtResource("1_s14ao")]
 script = ExtResource("2_0tus2")
-meshes = [null]
+meshes = [NodePath("CollisionShape3D/Model")]
 object_name = &"Road"
 object_icon = ExtResource("3_0tus2")
 

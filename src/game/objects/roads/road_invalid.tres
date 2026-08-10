@@ -14,6 +14,6 @@ shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.5
 shader_parameter/normal_scale = 1.0
 shader_parameter/ao_strength = 1.0
-shader_parameter/selected_emission = Vector3(0, 0, 0)
+shader_parameter/selected_emission = Vector3(1, 1, 1)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)

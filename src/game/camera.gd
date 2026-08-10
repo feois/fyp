@@ -116,9 +116,9 @@ static func project(origin: Vector3, camera_basis: Basis) -> Vector3:
 
 func project_mouse(layer: int) -> CollisionObject3D:
 	var origin := project_ray_origin(get_viewport().get_mouse_position())
-	var end := project_mouse_terrain()
+	var end := project(origin, global_basis)
 	var space_state := get_world_3d().direct_space_state
-	var query := PhysicsRayQueryParameters3D.create(origin, Vector3(end.x, 0, end.y))
+	var query := PhysicsRayQueryParameters3D.create(origin, end)
 	
 	query.collision_mask = layer
 	
