@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dwjvio564pdhg"]
+
+[ext_resource type="Shader" uid="uid://balc7sgw74ecn" path="res://src/shader_opaque.gdshader" id="1_8abpe"]
+[ext_resource type="Texture2D" uid="uid://bo67trl4kliel" path="res://src/objects/roads/road_texture.png" id="2_mxux2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8abpe")
+shader_parameter/albedo_color = Color(0, 1, 0, 1)
+shader_parameter/albedo_map = ExtResource("2_mxux2")
+shader_parameter/emission = Vector3(0, 0, 0)
+shader_parameter/emission_strength = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_strength = 1.0
+shader_parameter/selected_emission = Vector3(1, 1, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

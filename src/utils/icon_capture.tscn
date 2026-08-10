@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://djm8rtqjh88rs"]
 
 [ext_resource type="Script" uid="uid://bl3t8l80rnfpu" path="res://src/utils/icon_capture.gd" id="1_1yfbi"]
+[ext_resource type="PackedScene" uid="uid://coo4via7p7mcx" path="res://src/objects/residential/cottage.tscn" id="2_1yfbi"]
 
 [sub_resource type="Environment" id="Environment_1yfbi"]
 ambient_light_source = 2
@@ -12,14 +13,20 @@ transparent_bg = true
 size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 script = ExtResource("1_1yfbi")
-path = &"src/game/objects/temp"
+offset = Vector3(0, 0.5, 0)
+zoom = 3.0
+path = &"src/objects/residential/cottage"
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1936470156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Pivot" unique_id=1186522617]
 transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 61.24, 50, 61.24)
 projection = 1
 current = true
+size = 3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=846605922]
 environment = SubResource("Environment_1yfbi")
+
+[node name="Cottage" parent="." unique_id=1628805497 instance=ExtResource("2_1yfbi")]

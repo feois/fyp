@@ -10,7 +10,7 @@ enum RoadType {
 }
 
 
-const road_scene := preload("res://src/game/objects/roads/road.tscn")
+const road_scene := preload("res://src/objects/roads/road.tscn")
 
 
 @onready var world := owner as World

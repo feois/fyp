@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://djkh8vn3yg166"]
+
+[ext_resource type="Script" uid="uid://cotwtmdwxtt4r" path="res://src/objects/power/power.gd" id="1_2ybjr"]
+
+[node name="Power" type="Node" unique_id=792569302]
+script = ExtResource("1_2ybjr")

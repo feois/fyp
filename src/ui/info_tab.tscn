@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcyqaxhmxoyxd"]
 
 [ext_resource type="Script" uid="uid://vhn4trqvw8t1" path="res://src/ui/info_tab.gd" id="1_h5kdi"]
-[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/game/objects/power/power.png" id="1_s2i75"]
+[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="1_s2i75"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_knal7"]
 resource_local_to_scene = false

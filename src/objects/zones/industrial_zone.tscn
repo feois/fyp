@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://vs6t8pc4c5xc"]
+
+[ext_resource type="PackedScene" uid="uid://bps5var4p67cl" path="res://src/objects/zones/zone.tscn" id="1_ovjot"]
+[ext_resource type="Script" uid="uid://caetby2v7wslf" path="res://src/objects/zones/industrial_zone.gd" id="2_mk17h"]
+[ext_resource type="Texture2D" uid="uid://b80matb57cjkg" path="res://src/objects/zones/industrial.png" id="3_mk17h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2se"]
+albedo_color = Color(0, 0, 1, 0.49803922)
+
+[node name="IndustrialZone" unique_id=1628805497 instance=ExtResource("1_ovjot")]
+script = ExtResource("2_mk17h")
+material = SubResource("StandardMaterial3D_vr2se")
+object_name = &"Industrial Zone"
+object_icon = ExtResource("3_mk17h")

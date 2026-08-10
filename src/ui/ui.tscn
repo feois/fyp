@@ -7,8 +7,8 @@
 [ext_resource type="ButtonGroup" uid="uid://c2yyqglysat83" path="res://src/ui/object_group.tres" id="3_gucsq"]
 [ext_resource type="PackedScene" uid="uid://b1lvyjiub1m0x" path="res://src/ui/object_selector.tscn" id="4_8wxmc"]
 [ext_resource type="PackedScene" uid="uid://dcyqaxhmxoyxd" path="res://src/ui/info_tab.tscn" id="6_gucsq"]
-[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/game/objects/power/power.png" id="7_cx7gx"]
-[ext_resource type="Texture2D" uid="uid://bfkwik5h430s7" path="res://src/game/objects/power/coal_plant.png" id="8_t30i7"]
+[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="7_cx7gx"]
+[ext_resource type="Texture2D" uid="uid://bfkwik5h430s7" path="res://src/objects/power/coal_plant.png" id="8_t30i7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3e31"]
 content_margin_left = 4.0

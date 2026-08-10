@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://106nodn1cwor"]
+
+[ext_resource type="PackedScene" uid="uid://bi3dplv4y45cb" path="res://src/objects/game_object.tscn" id="1_ubpdo"]
+[ext_resource type="Script" uid="uid://hvrwkgibts6f" path="res://src/objects/residential/residential.gd" id="2_ntctx"]
+
+[node name="Residential" unique_id=1628805497 instance=ExtResource("1_ubpdo")]
+script = ExtResource("2_ntctx")
+object_name = &"Residential"

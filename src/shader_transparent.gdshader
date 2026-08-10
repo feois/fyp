@@ -16,8 +16,8 @@ uniform sampler2D normal_map : hint_normal;
 uniform sampler2D metallic_map : hint_default_white;
 uniform sampler2D roughness_map : hint_roughness_r;
 uniform sampler2D ao_map : hint_default_white;
-uniform sampler2D emission_map : source_color, hint_default_white;
-uniform vec3 emission;
+uniform sampler2D emission_map : source_color, hint_default_black;
+uniform vec3 emission : source_color;
 uniform float emission_strength;
 
 //

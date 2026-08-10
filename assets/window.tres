@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dssggixbfws7e"]
+
+[ext_resource type="Shader" uid="uid://b2echhor5j4f6" path="res://src/shader_transparent.gdshader" id="1_q76je"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_q76je")
+shader_parameter/albedo_color = Color(1, 1, 1, 0.8745098)
+shader_parameter/emission = Color(1, 1, 0.5, 1)
+shader_parameter/emission_strength = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_strength = 1.0
+shader_parameter/selected_emission = Vector3(0, 0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dohqnublhmulo"]
+
+[ext_resource type="Shader" uid="uid://balc7sgw74ecn" path="res://src/shader_opaque.gdshader" id="1_5rpma"]
+[ext_resource type="Texture2D" uid="uid://bad4ouhxl3im4" path="res://assets/Toon City Pack.png" id="2_qeg6q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5rpma")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_map = ExtResource("2_qeg6q")
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_strength = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
