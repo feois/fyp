@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dcyqaxhmxoyxd"]
 
 [ext_resource type="Script" uid="uid://vhn4trqvw8t1" path="res://src/ui/info_tab.gd" id="1_h5kdi"]
-[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="1_s2i75"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_knal7"]
 resource_local_to_scene = false
@@ -10,6 +9,7 @@ resource_local_to_scene = false
 script = ExtResource("1_h5kdi")
 
 [node name="Button" type="Button" parent="." unique_id=166473842]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_knal7")
@@ -27,6 +27,5 @@ unique_name_in_owner = true
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("1_s2i75")
 
 [connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

@@ -12,10 +12,9 @@ var is_main_road := false
 func neighbors():
 	var roads: Array[RoadGraph] = []
 	
-	for dir in Road.Direction.values():
-		var d := dir as Road.Direction
-		if road.has_direction(d):
-			var r := road.world.map.at(road.origin + Road.to_vector(d)) as Road
+	for dir in Direction.values:
+		if road.has_direction(dir):
+			var r := road.world.map.at(road.origin + Direction.vector(dir)) as Road
 			if r: roads.append(r.graph)
 	
 	return roads

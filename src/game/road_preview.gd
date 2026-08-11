@@ -22,26 +22,10 @@ var roads: Array[Road] = []
 var obstacle: GameObject
 var obstacle_index := 0
 var valid := false
-var direction: Road.Direction
+var direction: Direction.Enum
 
 
 func is_previewing() -> bool: return start != null
-
-
-func direction_to(pos: Vector2i) -> Road.Direction:
-	var d := pos - start.origin
-	
-	if absi(d.x) < absi(d.y): d.x = 0
-	else: d.y = 0
-	
-	match d.sign():
-		Vector2i.LEFT: return Road.Direction.Left
-		Vector2i.RIGHT: return Road.Direction.Right
-		Vector2i.UP: return Road.Direction.Up
-		Vector2i.DOWN: return Road.Direction.Down
-	
-	@warning_ignore("int_as_enum_without_match", "int_as_enum_without_cast")
-	return -1
 
 
 func new_preview() -> Road:
@@ -103,8 +87,8 @@ func point(pos: Vector2i) -> void:
 		previews.mode(false)
 		return
 	
-	var d := direction_to(pos)
-	var dv := Road.to_vector(d)
+	var d := Direction.normalize(pos - start.origin)
+	var dv := Direction.vector(d)
 	var offset := pos - start.origin
 	@warning_ignore("integer_division")
 	var n := (offset.x / dv.x) if dv.y == 0 else (offset.y / dv.y)
@@ -164,15 +148,15 @@ func set_directions(preview: Road, mode: RoadType) -> void:
 		RoadType.Start: preview.set_direction(direction, true)
 		RoadType.Middle:
 			preview.set_direction(direction, true)
-			preview.set_direction(Road.opposite(direction), true)
-		RoadType.End: preview.set_direction(Road.opposite(direction), true)
+			preview.set_direction(Direction.opposite(direction), true)
+		RoadType.End: preview.set_direction(Direction.opposite(direction), true)
 	
 	preview.update_mesh()
 
 
 func validate() -> bool:
 	if start.has_direction(direction): return false
-	if roads.any(func (road: Road) -> bool: return road.has_direction(Road.opposite(direction))):
+	if roads.any(func (road: Road) -> bool: return road.has_direction(Direction.opposite(direction))):
 		return false
 	return true
 

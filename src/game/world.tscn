@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bll5sx365ks0e" path="res://src/game/terrain_grid.gd" id="4_ws5b0"]
 [ext_resource type="Script" uid="uid://b2o0m75oqso6g" path="res://src/game/previews.gd" id="5_qrfg3"]
 [ext_resource type="Script" uid="uid://dovcq1kf1glh0" path="res://src/game/road_preview.gd" id="6_1hnva"]
-[ext_resource type="Script" uid="uid://chjwbutgnvsf4" path="res://src/game/object_selection.gd" id="8_f5g00"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi6ot"]
 albedo_color = Color(0, 0.4745098, 0.20784314, 1)
@@ -51,6 +50,7 @@ projection = 1
 size = 20.0
 script = ExtResource("2_38auj")
 speed = 1.0
+mouse_speed = 0.2
 distance = 100.0
 rotate_animation = 0.5
 move_animation = 0.5
@@ -98,6 +98,3 @@ script = ExtResource("5_qrfg3")
 [node name="RoadPreview" type="Node" parent="Scripts" unique_id=242923460]
 unique_name_in_owner = true
 script = ExtResource("6_1hnva")
-
-[node name="ObjectSelection" type="Node" parent="Scripts" unique_id=285797699]
-script = ExtResource("8_f5g00")

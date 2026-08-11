@@ -8,6 +8,7 @@ const trans_type := Tween.TRANS_CUBIC
 
 
 @export var speed := 0.0
+@export var mouse_speed := 0.0
 @export var distance := 0.0
 @export var rotate_animation := 0.0
 @export var move_animation := 0.0
@@ -23,6 +24,8 @@ var rotate_tween: Tween
 var rotate_offset: Vector3
 var target_rotation := 0.0
 var terrain_point: Vector2
+var drag := false
+var drag_origin := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -41,7 +44,17 @@ func _process(delta: float) -> void:
 		var input := Input.get_vector(
 			&"Move Left", &"Move Right",
 			&"Move Down", &"Move Up",
-		)
+		) * speed
+		var mouse := get_viewport().get_mouse_position()
+		
+		if Input.is_action_pressed(&"Drag", true):
+			if drag:
+				var d := mouse - drag_origin
+				d.x = -d.x
+				input += d * mouse_speed
+			else: drag = true
+			drag_origin = mouse
+		elif drag: drag = false
 		
 		if input:
 			var up := -global_basis.z
@@ -50,7 +63,7 @@ func _process(delta: float) -> void:
 			
 			var movement := global_basis.x * input.x + up.normalized() * input.y
 			
-			pivot.position += movement * (speed * size * delta)
+			pivot.position += movement * (size * delta)
 			maintain_distance()
 	
 	# rotate

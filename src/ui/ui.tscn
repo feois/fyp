@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://2tq0ihiv66sd" path="res://icon.svg" id="2_qemve"]
 [ext_resource type="ButtonGroup" uid="uid://c2yyqglysat83" path="res://src/ui/object_group.tres" id="3_gucsq"]
 [ext_resource type="PackedScene" uid="uid://b1lvyjiub1m0x" path="res://src/ui/object_selector.tscn" id="4_8wxmc"]
-[ext_resource type="PackedScene" uid="uid://dcyqaxhmxoyxd" path="res://src/ui/info_tab.tscn" id="6_gucsq"]
-[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="7_cx7gx"]
-[ext_resource type="Texture2D" uid="uid://bfkwik5h430s7" path="res://src/objects/power/coal_plant.png" id="8_t30i7"]
+[ext_resource type="PackedScene" uid="uid://dp0kefgo5fd1y" path="res://src/ui/object_info.tscn" id="6_gucsq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3e31"]
 content_margin_left = 4.0
@@ -80,38 +78,6 @@ bg_color = Color(0.5, 0.37625, 0.225, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cidq"]
 bg_color = Color(0.1, 0.1, 0.1, 0.24705882)
 corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t30i7"]
-bg_color = Color(0.25, 0.25, 0.25, 0.49803922)
-corner_radius_top_left = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mtcu"]
-bg_color = Color(0.5, 0.5, 0.5, 0.49803922)
-corner_radius_top_left = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5kay"]
-bg_color = Color(0, 0, 0, 0.49803922)
-corner_radius_top_left = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cplmo"]
-bg_color = Color(0.75, 0.75, 0.75, 0.49803922)
-corner_radius_top_left = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="Theme" id="Theme_1cidq"]
-Button/styles/hover = SubResource("StyleBoxFlat_t30i7")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_5mtcu")
-Button/styles/normal = SubResource("StyleBoxFlat_h5kay")
-Button/styles/pressed = SubResource("StyleBoxFlat_cplmo")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mh4k"]
-bg_color = Color(0, 0, 0, 0.7490196)
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
@@ -340,79 +306,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="ObjectInfo" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=845935828]
-unique_name_in_owner = true
-visible = false
+[node name="ObjectInfo" parent="VBoxContainer/HBoxContainer" unique_id=2082078807 node_paths=PackedStringArray("ui") instance=ExtResource("6_gucsq")]
 layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo" unique_id=1540561183]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer" unique_id=990579367]
-layout_mode = 2
-mouse_filter = 2
-theme = SubResource("Theme_1cidq")
-theme_override_constants/separation = 0
-
-[node name="Info" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/VBoxContainer" unique_id=362298661 node_paths=PackedStringArray("content") instance=ExtResource("6_gucsq")]
-layout_mode = 2
-content = NodePath("../../PanelContainer/MarginContainer/Info")
-icon = ExtResource("1_jlntk")
-
-[node name="Power" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/VBoxContainer" unique_id=41016819 node_paths=PackedStringArray("content") instance=ExtResource("6_gucsq")]
-layout_mode = 2
-content = NodePath("../../PanelContainer/MarginContainer/Power")
-icon = ExtResource("7_cx7gx")
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer" unique_id=547556953]
-custom_minimum_size = Vector2(512, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1mh4k")
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/PanelContainer" unique_id=2117701646]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="Info" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/PanelContainer/MarginContainer" unique_id=935335477]
-visible = false
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/PanelContainer/MarginContainer/Info" unique_id=7446784]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/PanelContainer/MarginContainer/Info/HBoxContainer" unique_id=1179886556]
-custom_maximum_size = Vector2(128, -1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_t30i7")
-expand_mode = 5
-
-[node name="Power" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/PanelContainer/MarginContainer" unique_id=60080178]
-visible = false
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/PanelContainer/MarginContainer/Power" unique_id=1468699349]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/ObjectInfo/HBoxContainer/PanelContainer/MarginContainer/Power/HBoxContainer" unique_id=1210015417]
-custom_maximum_size = Vector2(128, -1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("7_cx7gx")
-expand_mode = 5
+ui = NodePath("../../..")
 
 [node name="Objects" type="PanelContainer" parent="VBoxContainer" unique_id=1978609138]
 unique_name_in_owner = true

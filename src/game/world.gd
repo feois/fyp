@@ -20,6 +20,7 @@ enum TimeSpeed {
 
 @onready var map := %Map as Map
 @onready var previews := %Previews as Previews
+@onready var camera := %Camera as IsometricCamera
 
 
 var delta: float

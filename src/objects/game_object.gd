@@ -84,9 +84,9 @@ func rotate_counterclockwise() -> void:
 		Rotation.Double: rotated = Rotation.Clockwise
 
 
-func set_area(a: Vector2i, b: Vector2i) -> void:
+func set_area(a: Vector2i, b: Vector2i, set_size := true) -> void:
 	origin = a.min(b)
-	base_size = a.max(b) - origin + Vector2i.ONE
+	if set_size: base_size = a.max(b) - origin + Vector2i.ONE
 
 
 @warning_ignore("shadowed_variable")

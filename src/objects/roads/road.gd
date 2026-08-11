@@ -2,14 +2,6 @@ class_name Road
 extends GameObject
 
 
-enum Direction {
-	Left,
-	Right,
-	Up,
-	Down,
-}
-
-
 const straight_mesh := preload("res://src/objects/roads/straight.tres")
 const end_mesh := preload("res://src/objects/roads/end.tres")
 const turn_mesh := preload("res://src/objects/roads/turn.tres")
@@ -24,37 +16,18 @@ var directions := 0
 var preview_directions := 0
 
 
-static func to_vector(dir: Direction) -> Vector2i:
-	match dir:
-		Direction.Left: return Vector2i.LEFT
-		Direction.Right: return Vector2i.RIGHT
-		Direction.Up: return Vector2i.UP
-		Direction.Down: return Vector2i.DOWN
-	return Vector2i.ZERO
-
-
-static func opposite(dir: Direction) -> Direction:
-	match dir:
-		Direction.Left: return Direction.Right
-		Direction.Right: return Direction.Left
-		Direction.Up: return Direction.Down
-		Direction.Down: return Direction.Up
-	@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
-	return -1
-
-
 func clear_direction(preview := false) -> void:
 	if preview: preview_directions = 0
 	else: directions = 0
-func set_direction(dir: Direction, preview := false) -> void:
+func set_direction(dir: Direction.Enum, preview := false) -> void:
 	if preview: preview_directions |= 1 << dir
 	else: directions |= 1 << dir
-func unset_direction(dir: Direction, preview := false) -> void:
+func unset_direction(dir: Direction.Enum, preview := false) -> void:
 	if preview: preview_directions &= ~(1 << dir)
 	else: directions &= ~(1 << dir)
-func has_direction(dir: Direction, preview := false) -> bool:
+func has_direction(dir: Direction.Enum, preview := false) -> bool:
 	return ((directions >> dir) & 1) == 1 or (preview and ((preview_directions >> dir) & 1) == 1)
-func all_directions() -> bool: return directions == (1 << Direction.size()) - 1
+func all_directions() -> bool: return directions == (1 << Direction.count) - 1
 
 
 func update_connections() -> void:

@@ -5,6 +5,8 @@ extends Control
 @export var content: Control
 @export var icon: Texture2D
 
+@onready var button := %Button as Button
+
 
 func _ready() -> void: %Icon.texture = icon
 

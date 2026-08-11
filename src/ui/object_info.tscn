@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://dp0kefgo5fd1y"]
+
+[ext_resource type="Script" uid="uid://dj634jo50vh3g" path="res://src/ui/object_info.gd" id="1_qey2a"]
+[ext_resource type="PackedScene" uid="uid://dcyqaxhmxoyxd" path="res://src/ui/info_tab.tscn" id="2_1jmw6"]
+[ext_resource type="Texture2D" uid="uid://dcsr2ecibteqc" path="res://src/ui/settings.png" id="3_cvnog"]
+[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="4_lkm4p"]
+[ext_resource type="Texture2D" uid="uid://bfkwik5h430s7" path="res://src/objects/power/coal_plant.png" id="5_6i81u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t30i7"]
+bg_color = Color(0.25, 0.25, 0.25, 0.49803922)
+corner_radius_top_left = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mtcu"]
+bg_color = Color(0.5, 0.5, 0.5, 0.49803922)
+corner_radius_top_left = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5kay"]
+bg_color = Color(0, 0, 0, 0.49803922)
+corner_radius_top_left = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cplmo"]
+bg_color = Color(0.75, 0.75, 0.75, 0.49803922)
+corner_radius_top_left = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="Theme" id="Theme_1cidq"]
+Button/styles/hover = SubResource("StyleBoxFlat_t30i7")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_5mtcu")
+Button/styles/normal = SubResource("StyleBoxFlat_h5kay")
+Button/styles/pressed = SubResource("StyleBoxFlat_cplmo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mh4k"]
+bg_color = Color(0, 0, 0, 0.7490196)
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="ObjectInfo" type="MarginContainer" unique_id=2082078807]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 640.0
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_qey2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1727261017]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tabs" type="VBoxContainer" parent="HBoxContainer" unique_id=1905070841]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_1cidq")
+theme_override_constants/separation = 0
+
+[node name="Info" parent="HBoxContainer/Tabs" unique_id=362298661 node_paths=PackedStringArray("content") instance=ExtResource("2_1jmw6")]
+layout_mode = 2
+content = NodePath("../../PanelContainer/MarginContainer/Info")
+icon = ExtResource("3_cvnog")
+
+[node name="Power" parent="HBoxContainer/Tabs" unique_id=495656571 node_paths=PackedStringArray("content") instance=ExtResource("2_1jmw6")]
+layout_mode = 2
+content = NodePath("../../PanelContainer/MarginContainer/Power")
+icon = ExtResource("4_lkm4p")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1696404706]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1mh4k")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=209493342]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Info" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=112381573]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/Info" unique_id=159600192]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/Info/HBoxContainer" unique_id=180161650]
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_6i81u")
+expand_mode = 5
+
+[node name="Power" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=798641469]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/Power" unique_id=2001895069]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/Power/HBoxContainer" unique_id=1513747718]
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_lkm4p")
+expand_mode = 5
