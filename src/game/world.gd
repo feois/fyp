@@ -21,6 +21,7 @@ enum TimeSpeed {
 @onready var map := %Map as Map
 @onready var previews := %Previews as Previews
 @onready var camera := %Camera as IsometricCamera
+@onready var power_graph := %Graph/Power as GraphRenderer
 
 
 var delta: float

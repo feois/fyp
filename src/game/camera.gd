@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 
 
 func _input(event) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and not get_viewport().gui_get_hovered_control():
 		match event.button_index:
 			MOUSE_BUTTON_WHEEL_UP: size -= zoom_speed
 			MOUSE_BUTTON_WHEEL_DOWN: size += zoom_speed

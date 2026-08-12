@@ -1,76 +1,14 @@
 [gd_scene format=3 uid="uid://cucrtqu3mj8ju"]
 
 [ext_resource type="Script" uid="uid://djkx2w2vd6iow" path="res://src/ui/ui.gd" id="1_8wxmc"]
+[ext_resource type="Theme" uid="uid://cvuato2acbj2s" path="res://src/ui/theme.tres" id="1_cx7gx"]
 [ext_resource type="Texture2D" uid="uid://dcsr2ecibteqc" path="res://src/ui/settings.png" id="1_jlntk"]
 [ext_resource type="ButtonGroup" uid="uid://fuqpwei4fbx5" path="res://src/ui/category_group.tres" id="2_7abqo"]
 [ext_resource type="Texture2D" uid="uid://2tq0ihiv66sd" path="res://icon.svg" id="2_qemve"]
 [ext_resource type="ButtonGroup" uid="uid://c2yyqglysat83" path="res://src/ui/object_group.tres" id="3_gucsq"]
 [ext_resource type="PackedScene" uid="uid://b1lvyjiub1m0x" path="res://src/ui/object_selector.tscn" id="4_8wxmc"]
 [ext_resource type="PackedScene" uid="uid://dp0kefgo5fd1y" path="res://src/ui/object_info.tscn" id="6_gucsq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3e31"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.49803922)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7gu6"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8mi6"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.5, 0.5, 0.5, 0.24705882)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mtcu"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gavko"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.25, 0.25, 0.25, 0.24705882)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="Theme" id="Theme_yi6ot"]
-Button/styles/disabled = SubResource("StyleBoxFlat_j3e31")
-Button/styles/focus = SubResource("StyleBoxFlat_v7gu6")
-Button/styles/hover = SubResource("StyleBoxFlat_g8mi6")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_g8mi6")
-Button/styles/normal = SubResource("StyleBoxEmpty_5mtcu")
-Button/styles/pressed = SubResource("StyleBoxFlat_gavko")
-Label/font_sizes/font_size = 24
+[ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="7_t30i7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi6ot"]
 bg_color = Color(0.5, 0.37625, 0.225, 1)
@@ -81,6 +19,56 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t30i7"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0.49803922)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mh4k"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0.62352943)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5owu"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4riv"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0.7490196)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="Theme" id="Theme_1mh4k"]
+Button/styles/hover = SubResource("StyleBoxFlat_t30i7")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_1mh4k")
+Button/styles/normal = SubResource("StyleBoxEmpty_l5owu")
+Button/styles/pressed = SubResource("StyleBoxFlat_j4riv")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 4
+Label/font_sizes/font_size = 12
+Label/styles/normal = SubResource("StyleBoxEmpty_l5owu")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wxmc"]
 
@@ -127,7 +115,7 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_yi6ot")
+theme = ExtResource("1_cx7gx")
 script = ExtResource("1_8wxmc")
 category_group = ExtResource("2_7abqo")
 object_group = ExtResource("3_gucsq")
@@ -305,6 +293,41 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Screen" unique_id=10290448]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer" unique_id=1502432740]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_1mh4k")
+theme_override_constants/separation = 16
+
+[node name="PowerDisplay" type="Button" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer/HBoxContainer" unique_id=725891505]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+icon = ExtResource("7_t30i7")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer/HBoxContainer/PowerDisplay" unique_id=75003057]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_position = Vector2(-8, -8)
+text = "P"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="ObjectInfo" parent="VBoxContainer/HBoxContainer" unique_id=2082078807 node_paths=PackedStringArray("ui") instance=ExtResource("6_gucsq")]
 layout_mode = 2

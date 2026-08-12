@@ -27,7 +27,7 @@ uniform float roughness : hint_range(0.0, 1.0) = 0.5;
 uniform float normal_scale : hint_range(0.0, 4.0) = 1.0;
 uniform float ao_strength : hint_range(0.0, 1.0) = 1.0;
 
-uniform vec3 selected_emission = vec3(1.0);
+uniform vec3 selected_emission : source_color = vec3(1.0);
 instance uniform float selected_emission_strength = 0.0;
 
 //

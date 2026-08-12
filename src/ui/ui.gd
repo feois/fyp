@@ -21,6 +21,7 @@ const object_selector := preload("res://src/ui/object_selector.tscn")
 @onready var screen := %Screen as Control
 @onready var notifications := %Notifications as Control
 @onready var notification_padding := %NotificationPadding as Control
+@onready var power_display := %PowerDisplay as Button
 
 var notification_tween: Tween
 var callbacks: Array[Callable] = []

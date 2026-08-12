@@ -5,17 +5,18 @@ extends GraphSet
 @export var generation: float
 @export var usage: float
 
+@onready var object := owner as GameObject
 
-var group_generation: float
-var group_usage: float
+
+var _group_generation: float
+var _group_usage: float
 var _generation: float
 var _usage: float
 
-
-func on_join(d: DisjointSet) -> void:
-	var p := d as Power
-	generation += p.generation
-	usage += p.usage
+var total_generation: float:
+	get: return (root() as Power)._group_generation
+var total_usage: float:
+	get: return (root() as Power)._group_usage
 
 
 func on_reset() -> void:
@@ -24,9 +25,30 @@ func on_reset() -> void:
 	update()
 
 
+func on_join(d: DisjointSet) -> void:
+	var p := d as Power
+	generation += p.generation
+	usage += p.usage
+
+
+func on_connect(g: GraphSet) -> void:
+	var p := g as Power
+	object.world.power_graph.draw_new(object.global_position, p.object.global_position)
+
+
 func update() -> void:
 	var r := root() as Power
-	r.group_generation += generation - _generation
-	r.group_usage += usage - _usage
+	r._group_generation += generation - _generation
+	r._group_usage += usage - _usage
 	_generation = generation
 	_usage = usage
+
+
+static func to_str(power: float) -> String:
+	var kWh := power
+	var MWh := kWh / 1000
+	var GWh := MWh / 1000
+	
+	if GWh > 1: return "%.2f GWh" % GWh
+	if MWh > 1: return "%.2f MWh" % MWh
+	return "%.2f kWh" % kWh

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bdewu03owo37s" path="res://src/game/build_preview.gd" id="3_drn54"]
 [ext_resource type="Script" uid="uid://tcjiomhykfha" path="res://src/game/map.gd" id="3_tkkm2"]
 [ext_resource type="Script" uid="uid://bll5sx365ks0e" path="res://src/game/terrain_grid.gd" id="4_ws5b0"]
+[ext_resource type="Script" uid="uid://ub7ypjxuvrki" path="res://src/game/graph.gd" id="5_f5g00"]
 [ext_resource type="Script" uid="uid://b2o0m75oqso6g" path="res://src/game/previews.gd" id="5_qrfg3"]
 [ext_resource type="Script" uid="uid://dovcq1kf1glh0" path="res://src/game/road_preview.gd" id="6_1hnva"]
 
@@ -30,6 +31,16 @@ item/0/navigation_layers = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5g00"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5kay"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1cidq"]
+material = SubResource("StandardMaterial3D_h5kay")
+height = 1.0
+
+[sub_resource type="MultiMesh" id="MultiMesh_yi6ot"]
+transform_format = 1
+mesh = SubResource("CylinderMesh_1cidq")
 
 [sub_resource type="Environment" id="Environment_yi6ot"]
 ambient_light_source = 2
@@ -81,6 +92,13 @@ mesh = SubResource("ImmediateMesh_ws5b0")
 script = ExtResource("4_ws5b0")
 material = SubResource("StandardMaterial3D_f5g00")
 count = 3
+
+[node name="Graph" type="Node3D" parent="." unique_id=1746084664]
+unique_name_in_owner = true
+
+[node name="Power" type="MultiMeshInstance3D" parent="Graph" unique_id=520506161]
+multimesh = SubResource("MultiMesh_yi6ot")
+script = ExtResource("5_f5g00")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1839182601]
 environment = SubResource("Environment_yi6ot")
