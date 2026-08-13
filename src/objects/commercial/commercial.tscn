@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dxb7lpep1is5y"]
+
+[ext_resource type="PackedScene" uid="uid://bi3dplv4y45cb" path="res://src/objects/game_object.tscn" id="1_och51"]
+[ext_resource type="Script" uid="uid://bysxcvvm3v1e6" path="res://src/objects/commercial/commercial.gd" id="2_yr3kl"]
+[ext_resource type="Script" uid="uid://0arkquhbx4ug" path="res://src/objects/components/workplace.gd" id="3_yr3kl"]
+
+[node name="Commercial" unique_id=1628805497 instance=ExtResource("1_och51")]
+script = ExtResource("2_yr3kl")
+hover_emission = 0.0
+select_emission = 0.0
+
+[node name="Workplace" type="Node" parent="." index="1" unique_id=284232648]
+script = ExtResource("3_yr3kl")
+metadata/_custom_type_script = "uid://0arkquhbx4ug"

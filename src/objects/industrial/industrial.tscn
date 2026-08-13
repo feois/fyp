@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b8dxj6j38ba7q"]
+
+[ext_resource type="PackedScene" uid="uid://bi3dplv4y45cb" path="res://src/objects/game_object.tscn" id="1_7ihkk"]
+[ext_resource type="Script" uid="uid://0arkquhbx4ug" path="res://src/objects/components/workplace.gd" id="2_6yx2k"]
+[ext_resource type="Script" uid="uid://dxybkl7qoxqy" path="res://src/objects/industrial/industrial.gd" id="2_w6bo8"]
+
+[node name="Industrial" unique_id=1628805497 instance=ExtResource("1_7ihkk")]
+script = ExtResource("2_w6bo8")
+hover_emission = 0.0
+select_emission = 0.0
+
+[node name="Workplace" type="Node" parent="." index="1" unique_id=1154254622]
+script = ExtResource("2_6yx2k")
+metadata/_custom_type_script = "uid://0arkquhbx4ug"
