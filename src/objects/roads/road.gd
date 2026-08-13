@@ -57,8 +57,8 @@ func update_mesh() -> void:
 		1:
 			mesh.mesh = end_mesh
 			match 0:
-				0 when l: rotated = Rotation.Clockwise
-				0 when r: rotated = Rotation.Counterclockwise
+				0 when l: rotated = Rotation.Counterclockwise
+				0 when r: rotated = Rotation.Clockwise
 				0 when u: rotated = Rotation.None
 				0 when d: rotated = Rotation.Double
 		2 when l && r: mesh.mesh = straight_mesh; rotated = Rotation.Clockwise
@@ -67,16 +67,16 @@ func update_mesh() -> void:
 			mesh.mesh = turn_mesh
 			match 0:
 				0 when l && u: rotated = Rotation.Double
-				0 when u && r: rotated = Rotation.Clockwise
+				0 when u && r: rotated = Rotation.Counterclockwise
 				0 when r && d: rotated = Rotation.None
-				0 when d && l: rotated = Rotation.Counterclockwise
+				0 when d && l: rotated = Rotation.Clockwise
 		3:
 			mesh.mesh = tjunction_mesh
 			match 0:
 				0 when !r: rotated = Rotation.Double
-				0 when !d: rotated = Rotation.Clockwise
+				0 when !d: rotated = Rotation.Counterclockwise
 				0 when !l: rotated = Rotation.None
-				0 when !u: rotated = Rotation.Counterclockwise
+				0 when !u: rotated = Rotation.Clockwise
 		4: mesh.mesh = cross_mesh; rotated = Rotation.None
 		_: mesh.mesh = null; rotated = Rotation.None
 	
@@ -89,7 +89,7 @@ func is_main_road() -> bool:
 
 
 func _get_road(direction: Direction.Enum) -> Road:
-	return world.map.at(origin - Direction.vector(direction)) as Road if has_direction(direction) else null
+	return world.map.at(origin + Direction.vector(direction)) as Road if has_direction(direction) else null
 
 
 func destroy() -> void:
@@ -100,10 +100,10 @@ func destroy() -> void:
 	var u := _get_road(Direction.Up)
 	var d := _get_road(Direction.Down)
 	
-	if l: l.graph.mark_dirty(); l.unset_direction(Direction.Right)
-	if r: r.graph.mark_dirty(); r.unset_direction(Direction.Left)
-	if u: u.graph.mark_dirty(); u.unset_direction(Direction.Down)
-	if d: d.graph.mark_dirty(); d.unset_direction(Direction.Up)
+	if l: l.graph.mark_dirty(); l.unset_direction(Direction.Right); l.update_mesh()
+	if r: r.graph.mark_dirty(); r.unset_direction(Direction.Left); r.update_mesh()
+	if u: u.graph.mark_dirty(); u.unset_direction(Direction.Down); u.update_mesh()
+	if d: d.graph.mark_dirty(); d.unset_direction(Direction.Up); d.update_mesh()
 	
 	if l: l.graph.rebuild()
 	if r: r.graph.rebuild()
