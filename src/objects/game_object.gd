@@ -25,7 +25,12 @@ enum Rotation {
 @export var face_back := false
 
 @onready var tile_highlight := %TileHighlight as MeshInstance3D
+
+# components
 @onready var power := get_node_or_null(^"Power") as Power
+@onready var water := get_node_or_null(^"Water") as Water
+@onready var pollution := get_node_or_null(^"Pollution") as Pollution
+@onready var workplace := get_node_or_null(^"Workplace") as Workplace
 
 var world: World
 var is_preview := false
@@ -35,10 +40,11 @@ var flip_x := false
 var flip_y := false
 var _connected := false
 var _connected_stale := true
+var polluted := 0.0
+var noise := 0.0
 
 
-func _ready() -> void:
-	clear_preview()
+func _ready() -> void: clear_preview()
 
 
 func _process(_delta: float) -> void:
@@ -50,14 +56,21 @@ func process() -> void: pass
 
 @warning_ignore("shadowed_variable")
 func instantiate(world: World) -> GameObject:
-	var obj := duplicate()
+	var obj := duplicate() as GameObject
 	obj.world = world
 	obj.origin = origin
 	obj.rotated = rotated
 	obj.flip_x = flip_x
 	obj.flip_y = flip_y
-	world.road_update.connect(func () -> void: _connected_stale = true)
+	world.road_update.connect(obj.set_stale_connection)
 	return obj
+
+
+func destroy() -> void:
+	if is_placed(): world.map.remove(self)
+	if power: power.disconnect_all()
+	if water: water.disconnect_all()
+	queue_free()
 
 
 func is_placed() -> bool: return world.map.at(origin) == self
@@ -144,6 +157,9 @@ func is_connected_to_main_road() -> bool:
 		)
 		_connected_stale = false
 	return _connected
+
+
+func set_stale_connection() -> void: _connected_stale = true
 
 
 func offset(x: int, y: int) -> Vector2i:

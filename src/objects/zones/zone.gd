@@ -7,6 +7,11 @@ extends GameObject
 @onready var mesh := $MeshInstance3D as MeshInstance3D
 
 
+func _process(_delta: float) -> void:
+	super._process(_delta)
+	visible = world.ui.building or world.ui.zone_display or world.ui.destruction_mode
+
+
 func update_transform() -> void:
 	super.update_transform()
 	

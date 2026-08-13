@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b1lvyjiub1m0x" path="res://src/ui/object_selector.tscn" id="4_8wxmc"]
 [ext_resource type="PackedScene" uid="uid://dp0kefgo5fd1y" path="res://src/ui/object_info.tscn" id="6_gucsq"]
 [ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="7_t30i7"]
+[ext_resource type="Texture2D" uid="uid://bmhklmu6hj52g" path="res://src/objects/zones/zones.png" id="8_1mh4k"]
+[ext_resource type="Texture2D" uid="uid://js2lnpq2wnde" path="res://src/ui/trash.png" id="9_l5owu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi6ot"]
 bg_color = Color(0.5, 0.37625, 0.225, 1)
@@ -188,7 +190,8 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/MarginContainer" unique_id=1475793700]
+[node name="Time" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/MarginContainer" unique_id=1475793700]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 text = "lorem ipsum"
@@ -294,30 +297,39 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Screen" unique_id=10290448]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Screen" unique_id=444374622]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer" unique_id=1502432740]
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3" unique_id=1750606036]
 layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control" unique_id=1502432740]
+layout_mode = 1
+offset_right = 112.0
+offset_bottom = 48.0
 mouse_filter = 2
 theme = SubResource("Theme_1mh4k")
 theme_override_constants/separation = 16
 
-[node name="PowerDisplay" type="Button" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer/HBoxContainer" unique_id=725891505]
+[node name="PowerDisplay" type="Button" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer" unique_id=725891505]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/icon_max_width = 32
 toggle_mode = true
 icon = ExtResource("7_t30i7")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer/HBoxContainer/PowerDisplay" unique_id=75003057]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/PowerDisplay" unique_id=75003057]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -328,6 +340,137 @@ offset_transform_position = Vector2(-8, -8)
 text = "P"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="ZoneDisplay" type="Button" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer" unique_id=1490919376]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+icon = ExtResource("8_1mh4k")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/ZoneDisplay" unique_id=524769360]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_position = Vector2(-8, -8)
+text = "P"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="PollutionDisplay" type="Button" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer" unique_id=470962256]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+icon = ExtResource("2_qemve")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/PollutionDisplay" unique_id=2081818296]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_position = Vector2(-8, -8)
+text = "P"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="NoiseDisplay" type="Button" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer" unique_id=395247514]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+icon = ExtResource("2_qemve")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/NoiseDisplay" unique_id=2094238327]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_position = Vector2(-8, -8)
+text = "P"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control" unique_id=500053062]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 16.0
+grow_vertical = 0
+theme = SubResource("Theme_1mh4k")
+
+[node name="DestroyMode" type="Button" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/MarginContainer2" unique_id=1061296090]
+layout_mode = 2
+toggle_mode = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/MarginContainer2" unique_id=1809495215]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/MarginContainer2/MarginContainer" unique_id=568626324]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_l5owu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Warnings" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control" unique_id=1544431764]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="NoiseWarning" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/Warnings" unique_id=349737440]
+unique_name_in_owner = true
+layout_mode = 2
+text = "⚠️ Current area is noisy"
+horizontal_alignment = 1
+
+[node name="PollutionWarning" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/Warnings" unique_id=1253645599]
+unique_name_in_owner = true
+layout_mode = 2
+text = "⚠️ Current area is polluted"
+horizontal_alignment = 1
+
+[node name="DestroyMode" type="Label" parent="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control" unique_id=413735460]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -34.0
+offset_right = 62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Destruction mode"
+horizontal_alignment = 1
 
 [node name="ObjectInfo" parent="VBoxContainer/HBoxContainer" unique_id=2082078807 node_paths=PackedStringArray("ui") instance=ExtResource("6_gucsq")]
 layout_mode = 2
@@ -375,3 +518,11 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
+
+[connection signal="object_selected" from="." to="." method="_on_object_selected"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/Button" to="." method="_on_time_change"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/PowerDisplay" to="." method="_on_power_display_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/ZoneDisplay" to="." method="_on_power_display_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/PollutionDisplay" to="." method="_on_power_display_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/HBoxContainer/NoiseDisplay" to="." method="_on_power_display_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Screen/MarginContainer3/Control/MarginContainer2/DestroyMode" to="." method="_on_destroy_mode_toggled"]

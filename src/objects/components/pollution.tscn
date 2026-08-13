@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cbjev8pypr6b6"]
+
+[ext_resource type="Script" uid="uid://cqpkmn142dhbu" path="res://src/objects/components/pollution.gd" id="1_n4yqk"]
+[ext_resource type="PackedScene" uid="uid://djuol28akrr4m" path="res://src/objects/components/area_effect.tscn" id="1_po8nr"]
+[ext_resource type="Shader" uid="uid://fyfu1h8qllfb" path="res://src/objects/components/pollution.gdshader" id="2_w3une"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_brqmj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q2j43"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_brqmj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hla3h"]
+render_priority = 0
+shader = ExtResource("2_w3une")
+shader_parameter/radius = 1.0
+shader_parameter/color = Color(0.5, 0, 1, 1)
+shader_parameter/thickness = 0.010000000475
+shader_parameter/fill = Color(0.46875, 0.1875, 0.75, 0.49803922)
+shader_parameter/noise = SubResource("NoiseTexture2D_q2j43")
+shader_parameter/noise_scale = 0.1
+
+[node name="Pollution" unique_id=2061763577 instance=ExtResource("1_po8nr")]
+collision_layer = 0
+script = ExtResource("1_n4yqk")
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=647762187]
+surface_material_override/0 = SubResource("ShaderMaterial_hla3h")

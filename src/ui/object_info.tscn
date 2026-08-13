@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dcsr2ecibteqc" path="res://src/ui/settings.png" id="3_cvnog"]
 [ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="4_lkm4p"]
 [ext_resource type="Texture2D" uid="uid://bfkwik5h430s7" path="res://src/objects/power/coal_plant.png" id="5_6i81u"]
+[ext_resource type="PackedScene" uid="uid://csb0a2sgxh8a7" path="res://src/ui/connection.tscn" id="7_cvnog"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t30i7"]
 bg_color = Color(0.25, 0.25, 0.25, 0.49803922)
@@ -38,6 +39,9 @@ bg_color = Color(0, 0, 0, 0.7490196)
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cvnog"]
+load_path = "res://.godot/imported/trash.png-c31d6158c193973ce19ae0200cd4c998.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2xcp"]
 corner_radius_top_left = 16
@@ -120,9 +124,8 @@ theme_override_constants/margin_bottom = 16
 
 [node name="Info" type="VBoxContainer" parent="HBoxContainer/PanelContainer/Content" unique_id=112381573]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 
 [node name="Name" type="Label" parent="HBoxContainer/PanelContainer/Content/Info" unique_id=1622576516]
 unique_name_in_owner = true
@@ -143,8 +146,76 @@ texture = ExtResource("5_6i81u")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/Content/Info" unique_id=185841755]
+layout_mode = 2
+text = "Status"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/Content/Info" unique_id=1375149471]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="Status" type="VBoxContainer" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer" unique_id=541956016]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Power" type="Label" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer/Status" unique_id=951217371]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "Power: OK"
+
+[node name="Water" type="Label" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer/Status" unique_id=1837718124]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "Water: OK"
+
+[node name="Pollution" type="Label" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer/Status" unique_id=822392595]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "Pollution level: 0.5"
+
+[node name="Noise" type="Label" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer/Status" unique_id=2061380446]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "Noise level: 0.5"
+
+[node name="Padding" type="Control" parent="HBoxContainer/PanelContainer/Content/Info" unique_id=409042010]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/Content/Info" unique_id=130688997]
+layout_mode = 2
+
+[node name="Destroy" type="Button" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer2" unique_id=148209900]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer2" unique_id=796161435]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer2/MarginContainer" unique_id=1951190076]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer2/MarginContainer/HBoxContainer" unique_id=752217931]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("CompressedTexture2D_cvnog")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/Content/Info/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1799223372]
+layout_mode = 2
+text = "Destroy"
+
 [node name="Power" type="VBoxContainer" parent="HBoxContainer/PanelContainer/Content" unique_id=798641469]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 
@@ -200,18 +271,7 @@ text = "123.45 MWh / 234.56 MWh"
 layout_mode = 2
 text = "Connections:"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/PanelContainer/Content/Power" unique_id=978148754]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer" unique_id=1321732012]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PowerConnect" type="Button" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer" unique_id=168640466]
+[node name="PowerConnect" type="Button" parent="HBoxContainer/PanelContainer/Content/Power" unique_id=168640466]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -223,59 +283,20 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1jmw6")
 toggle_mode = true
 text = "+ Connect"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer" unique_id=645001680]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/PanelContainer/Content/Power" unique_id=978148754]
 layout_mode = 2
-theme_override_constants/separation = 16
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=883119737]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1003803219]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=42165166]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer" unique_id=942860947]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 8
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=1682300710]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("5_6i81u")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=704039566]
-custom_minimum_size = Vector2(1, 0)
+[node name="PowerConnections" type="VBoxContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer" unique_id=1321732012]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Name"
-autowrap_mode = 3
+size_flags_vertical = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=2083419309]
+[node name="HBoxContainer" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/PowerConnections" unique_id=199384425 instance=ExtResource("7_cvnog")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=574394371]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=1105837793]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-text = "×"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="toggled" from="HBoxContainer/PanelContainer/Content/Power/ScrollContainer/VBoxContainer/PowerConnect" to="." method="_on_power_connect"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/Content/Info/MarginContainer2/Destroy" to="." method="_on_destroy_pressed"]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/Content/Power/PowerConnect" to="." method="_on_power_connect"]

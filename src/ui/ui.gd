@@ -21,12 +21,28 @@ const object_selector := preload("res://src/ui/object_selector.tscn")
 @onready var screen := %Screen as Control
 @onready var notifications := %Notifications as Control
 @onready var notification_padding := %NotificationPadding as Control
-@onready var power_display := %PowerDisplay as Button
+@onready var noise_warning := %NoiseWarning as Label
+@onready var pollution_warning := %PollutionWarning as Label
 
 var notification_tween: Tween
 var callbacks: Array[Callable] = []
 var stack := []
 var cancelling = null
+var building := false
+var destruction_mode := false
+
+var power_display: bool:
+	get: return %PowerDisplay.button_pressed
+	set(value): %PowerDisplay.button_pressed = value
+var zone_display: bool:
+	get: return %ZoneDisplay.button_pressed
+	set(value): %ZoneDisplay.button_pressed = value
+var pollution_display: bool:
+	get: return %PollutionDisplay.button_pressed
+	set(value): %PollutionDisplay.button_pressed = value
+var noise_display: bool:
+	get: return %NoiseDisplay.button_pressed
+	set(value): %NoiseDisplay.button_pressed = value
 
 
 func _ready() -> void:
@@ -40,9 +56,23 @@ func _ready() -> void:
 	
 	category_group.pressed.connect(set_category)
 	object_group.pressed.connect(set_object)
+	
+	%Warnings.visible = false
 
 
 func _process(_delta: float) -> void:
+	var time := Time.get_datetime_dict_from_unix_time(world.get_time())
+	
+	%Time.text = "%s, %d %s %d %02d:%02d" % [
+		["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][time.weekday],
+		time.day,
+		["", "January", "February", "March", "April", "May", "June", "July", "August",
+		"September", "October", "November", "December"][time.month],
+		time.year,
+		time.hour,
+		time.minute,
+	]
+	
 	if Input.is_action_just_pressed(&"Cancel"): cancel()
 
 
@@ -50,7 +80,7 @@ func center() -> Vector2: return screen.global_position + screen.size / 2
 
 
 func set_category(button: Button = null) -> void:
-	pop(Category)
+	cancel_until(Category)
 	
 	if button and category_group.get_pressed_button():
 		var category := button.owner as CategoryTab
@@ -131,3 +161,32 @@ func cancel() -> void:
 
 func cancel_all() -> void:
 	while not stack.is_empty(): cancel()
+
+
+func cancel_until(tag) -> void:
+	while (not stack.is_empty()) and stack.back() != tag: cancel()
+
+
+func _on_power_display_toggled(toggled_on: bool) -> void: world.power_graph.visible = toggled_on
+
+
+func _on_time_change() -> void:
+	match world.time_speed:
+		World.TimeSpeed.Normal: world.time_speed = World.TimeSpeed.Double
+		World.TimeSpeed.Double: world.time_speed = World.TimeSpeed.Quadruple
+		World.TimeSpeed.Quadruple: world.time_speed = World.TimeSpeed.Normal
+
+
+func _on_object_selected(object: GameObject) -> void:
+	%Warnings.visible = object != null
+	for warning in %Warnings.get_children(): warning.visible = false
+
+
+func _on_destroy_mode_toggled(toggled_on: bool = false) -> void:
+	%DestroyMode.visible = toggled_on
+	
+	cancel_all()
+	
+	if toggled_on: push(%DestroyMode, _on_destroy_mode_toggled)
+	
+	destruction_mode = toggled_on

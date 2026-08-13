@@ -22,18 +22,25 @@ var total_usage: float:
 func on_reset() -> void:
 	_generation = 0
 	_usage = 0
+	_group_generation = 0
+	_group_usage = 0
 	update()
 
 
 func on_join(d: DisjointSet) -> void:
 	var p := d as Power
-	generation += p.generation
-	usage += p.usage
+	_group_generation += p._group_generation
+	_group_usage += p._group_usage
 
 
 func on_connect(g: GraphSet) -> void:
 	var p := g as Power
-	object.world.power_graph.draw_new(object.global_position, p.object.global_position)
+	object.world.power_graph.draw_line(object.global_position, p.object.global_position)
+
+
+func on_disconnect(g: GraphSet) -> void:
+	var p := g as Power
+	object.world.power_graph.remove_line(object.global_position, p.object.global_position)
 
 
 func update() -> void:
@@ -42,6 +49,11 @@ func update() -> void:
 	r._group_usage += usage - _usage
 	_generation = generation
 	_usage = usage
+
+
+func is_sufficient() -> bool:
+	var r := root() as Power
+	return r._group_usage <= r._group_generation
 
 
 static func to_str(power: float) -> String:

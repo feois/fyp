@@ -12,15 +12,13 @@ func _ready() -> void: reset()
 func is_root() -> bool: return self == self.parent
 
 
-func is_valid() -> bool: return parent != null
-
-
-func invalidate() -> void: parent = null
+func is_valid() -> bool: return root() != null
 
 
 func root() -> DisjointSet:
 	var n := self
-	while !n.is_root():
+	while not n.is_root():
+		if not n.parent: return null
 		var p := n.parent
 		var gp := p.parent
 		n.parent = gp
@@ -60,17 +58,23 @@ func reset() -> void:
 func neighbors(): return []
 
 
+func mark_dirty() -> void:
+	var r := root()
+	if r: r.parent = null
+
+
 func rebuild() -> void:
+	if is_valid(): return
+	
 	var nodes := [self]
 	
-	root().invalidate()
 	reset()
 	
 	while not nodes.is_empty():
 		var node := nodes.pop_back() as DisjointSet
 		
 		for n in node.neighbors():
-			if n.is_valid() and n.is_root(): continue
+			if n.is_root(): continue
 			n.reset()
 			nodes.push_back(n)
 	

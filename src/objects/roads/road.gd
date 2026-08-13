@@ -86,3 +86,26 @@ func update_mesh() -> void:
 func is_main_road() -> bool:
 	var root := graph.root() as RoadGraph
 	return root and root.is_main_road
+
+
+func _get_road(direction: Direction.Enum) -> Road:
+	return world.map.at(origin - Direction.vector(direction)) as Road if has_direction(direction) else null
+
+
+func destroy() -> void:
+	super.destroy()
+	
+	var l := _get_road(Direction.Left)
+	var r := _get_road(Direction.Right)
+	var u := _get_road(Direction.Up)
+	var d := _get_road(Direction.Down)
+	
+	if l: l.graph.mark_dirty(); l.unset_direction(Direction.Right)
+	if r: r.graph.mark_dirty(); r.unset_direction(Direction.Left)
+	if u: u.graph.mark_dirty(); u.unset_direction(Direction.Down)
+	if d: d.graph.mark_dirty(); d.unset_direction(Direction.Up)
+	
+	if l: l.graph.rebuild()
+	if r: r.graph.rebuild()
+	if u: u.graph.rebuild()
+	if d: d.graph.rebuild()

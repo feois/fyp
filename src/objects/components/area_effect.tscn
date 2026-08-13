@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://djuol28akrr4m"]
+
+[ext_resource type="Script" uid="uid://wk8hd3rnk58q" path="res://src/objects/components/area_effect.gd" id="1_n4yqk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n4yqk"]
+radius = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q2j43"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.001
+
+[node name="AreaEffect" type="Area3D" unique_id=2061763577]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_n4yqk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1456009511]
+shape = SubResource("CylinderShape3D_n4yqk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=647762187]
+mesh = SubResource("CylinderMesh_q2j43")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

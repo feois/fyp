@@ -6,6 +6,7 @@ extends Node3D
 @onready var previews := %Previews as Previews
 @onready var road_preview := %RoadPreview as RoadPreview
 
+
 var point: Vector2i
 
 var object: GameObject
@@ -49,28 +50,25 @@ func build_input() -> bool:
 
 func preview_build() -> void:
 	object.origin = point
-	object.update_transform()
-	check_update()
 	
 	var l := Input.is_action_just_pressed(&"Place Rotate Left", true)
 	var r := Input.is_action_just_pressed(&"Place Rotate Right", true)
-	var u := false
 	
 	if l != r:
 		if l: object.rotate_counterclockwise()
 		else: object.rotate_clockwise()
-		u = true
-		check_update()
 	
-	if Input.is_action_just_pressed(&"Flip X", true):
-		object.flip_x = not object.flip_x
-		u = true
+	if Input.is_action_just_pressed(&"Flip X", true): object.flip_x = not object.flip_x
+	if Input.is_action_just_pressed(&"Flip Y", true): object.flip_y = not object.flip_y
 	
-	if Input.is_action_just_pressed(&"Flip Y", true):
-		object.flip_y = not object.flip_y
-		u = true
+	object.update_transform()
 	
-	if u: object.update_transform()
+	if check_update():
+		object.polluted = 0
+		object.noise = 0
+		world.reapply_effects.emit(object)
+		world.ui.pollution_warning.visible = Pollution.is_dangerous(object.polluted)
+		world.ui.noise_warning.visible = false
 	
 	if build_input():
 		if check.is_valid():
@@ -173,15 +171,17 @@ func preview_zone(zone: Zone) -> void:
 			else: notify_blocked()
 
 
-func check_update() -> void:
+func check_update() -> bool:
 	if check == null: check = world.map.check(object, point)
-	elif not check.update(): return
+	elif not check.update(): return false
 	
 	previews.clear(object)
 	previews.mode(check.is_valid())
 	
 	if not check.is_valid():
 		for obstacle in check.get_obstacles(): previews.add(obstacle)
+	
+	return true
 
 
 func set_object(obj: GameObject) -> void:
@@ -193,9 +193,11 @@ func set_object(obj: GameObject) -> void:
 		object.queue_free()
 		object = null
 		check = null
+		world.ui.building = false
 	
 	if obj:
 		object = obj.instantiate(world)
 		object.is_preview = true
 		add_child(object)
 		previews.add(object)
+		world.ui.building = true

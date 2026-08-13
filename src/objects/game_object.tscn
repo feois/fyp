@@ -15,4 +15,5 @@ select_emission = 0.5
 [node name="TileHighlight" type="MeshInstance3D" parent="." unique_id=434847957]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+visible = false
 mesh = SubResource("BoxMesh_yi6ot")

@@ -80,16 +80,20 @@ func check(obj: GameObject, pos = null, rotate = null) -> Map.Check:
 func place(check: Check) -> GameObject:
 	if not check.is_valid(): return null
 	
-	for x in range(check.obj.real_size().x):
-		for y in range(check.obj.real_size().y):
-			map[check.obj.origin + Vector2i(x, y)] = check.obj
+	var obj := check.obj
 	
-	objects.add_child(check.obj)
-	check.obj.update_transform()
+	for x in range(obj.real_size().x):
+		for y in range(obj.real_size().y):
+			map[obj.origin + Vector2i(x, y)] = obj
+	
+	objects.add_child(obj)
+	obj.update_transform()
+	
+	if obj is Road: world.road_update.emit()
 	
 	timestamp += 1
 	
-	return check.obj
+	return obj
 
 
 func remove(object: GameObject) -> void:

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://v2bibyw4f6wj" path="res://src/objects/roads/road.tscn" id="6_cdx1q"]
 [ext_resource type="PackedScene" uid="uid://6r5patqt4slt" path="res://src/objects/zones/commercial_zone.tscn" id="7_uktfx"]
 [ext_resource type="Texture2D" uid="uid://cpdf0lpuv6rgr" path="res://src/objects/power/power.png" id="9_qiocs"]
-[ext_resource type="PackedScene" uid="uid://ctu8osqp2mqxt" path="res://src/objects/power/coal_plant.tscn" id="10_xdrfk"]
+[ext_resource type="PackedScene" uid="uid://wrksd2t4e2qv" path="res://src/objects/power/coal_plant.tscn" id="10_xdrfk"]
 [ext_resource type="PackedScene" uid="uid://ckn47ieav0bvd" path="res://src/objects/power/wind_turbine.tscn" id="11_g3j30"]
 [ext_resource type="Texture2D" uid="uid://bni6myhf3crj8" path="res://src/objects/water/water.png" id="12_g3j30"]
 [ext_resource type="PackedScene" uid="uid://cbt8wjiiatcyi" path="res://src/objects/water/well.tscn" id="13_a7soy"]

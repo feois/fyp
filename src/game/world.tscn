@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://ub7ypjxuvrki" path="res://src/game/graph.gd" id="5_f5g00"]
 [ext_resource type="Script" uid="uid://b2o0m75oqso6g" path="res://src/game/previews.gd" id="5_qrfg3"]
 [ext_resource type="Script" uid="uid://dovcq1kf1glh0" path="res://src/game/road_preview.gd" id="6_1hnva"]
+[ext_resource type="Script" uid="uid://bxnlm1dj1wx41" path="res://src/game/destruction.gd" id="9_tqpvw"]
+[ext_resource type="Script" uid="uid://4aj5joys0mkd" path="res://src/game/agent_manager.gd" id="10_8x1mj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi6ot"]
 albedo_color = Color(0, 0.4745098, 0.20784314, 1)
@@ -33,14 +35,52 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5kay"]
+albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1cidq"]
 material = SubResource("StandardMaterial3D_h5kay")
+top_radius = 0.1
+bottom_radius = 0.1
 height = 1.0
 
 [sub_resource type="MultiMesh" id="MultiMesh_yi6ot"]
 transform_format = 1
 mesh = SubResource("CylinderMesh_1cidq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqpvw"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8x1mj"]
+material = SubResource("StandardMaterial3D_tqpvw")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="MultiMesh" id="MultiMesh_wncxb"]
+transform_format = 1
+mesh = SubResource("CylinderMesh_8x1mj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8mi6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yi6ot"]
+material = SubResource("StandardMaterial3D_g8mi6")
+size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cplmo"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f5g00"]
+material = SubResource("StandardMaterial3D_cplmo")
+size = Vector3(1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mtcu"]
+transparency = 1
+albedo_color = Color(1, 0.25, 0.25, 0.49803922)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h5kay"]
+material = SubResource("StandardMaterial3D_5mtcu")
+size = Vector3(1, 0.05, 1)
 
 [sub_resource type="Environment" id="Environment_yi6ot"]
 ambient_light_source = 2
@@ -49,6 +89,7 @@ ambient_light_energy = 0.5
 
 [node name="World" type="Node3D" unique_id=1331461221]
 script = ExtResource("1_thycv")
+seconds_per_day = 10.0
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=2142466188]
 unique_name_in_owner = true
@@ -97,8 +138,38 @@ count = 3
 unique_name_in_owner = true
 
 [node name="Power" type="MultiMeshInstance3D" parent="Graph" unique_id=520506161]
+visible = false
 multimesh = SubResource("MultiMesh_yi6ot")
 script = ExtResource("5_f5g00")
+
+[node name="Water" type="MultiMeshInstance3D" parent="Graph" unique_id=2082659886]
+visible = false
+multimesh = SubResource("MultiMesh_wncxb")
+script = ExtResource("5_f5g00")
+
+[node name="TileSelection" type="Node3D" parent="." unique_id=1829329714]
+unique_name_in_owner = true
+visible = false
+
+[node name="Left" type="MeshInstance3D" parent="TileSelection" unique_id=966307020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.05, 0)
+mesh = SubResource("BoxMesh_yi6ot")
+
+[node name="Right" type="MeshInstance3D" parent="TileSelection" unique_id=985207347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.05, 0)
+mesh = SubResource("BoxMesh_yi6ot")
+
+[node name="Up" type="MeshInstance3D" parent="TileSelection" unique_id=658759667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.45)
+mesh = SubResource("BoxMesh_f5g00")
+
+[node name="Down" type="MeshInstance3D" parent="TileSelection" unique_id=324829826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0.45)
+mesh = SubResource("BoxMesh_f5g00")
+
+[node name="Inner" type="MeshInstance3D" parent="TileSelection" unique_id=655034310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+mesh = SubResource("BoxMesh_h5kay")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1839182601]
 environment = SubResource("Environment_yi6ot")
@@ -116,3 +187,10 @@ script = ExtResource("5_qrfg3")
 [node name="RoadPreview" type="Node" parent="Scripts" unique_id=242923460]
 unique_name_in_owner = true
 script = ExtResource("6_1hnva")
+
+[node name="Destruction" type="Node" parent="Scripts" unique_id=327741307]
+script = ExtResource("9_tqpvw")
+
+[node name="AgentManager" type="Node" parent="Scripts" unique_id=1542599860]
+unique_name_in_owner = true
+script = ExtResource("10_8x1mj")
