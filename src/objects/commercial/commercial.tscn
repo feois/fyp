@@ -6,8 +6,6 @@
 
 [node name="Commercial" unique_id=1628805497 instance=ExtResource("1_och51")]
 script = ExtResource("2_yr3kl")
-hover_emission = 0.0
-select_emission = 0.0
 
 [node name="Workplace" type="Node" parent="." index="1" unique_id=284232648]
 script = ExtResource("3_yr3kl")
