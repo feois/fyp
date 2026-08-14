@@ -69,9 +69,10 @@ shadow_mesh = SubResource("ArrayMesh_jr7b8")
 max_produce = 0
 base_size = Vector2i(4, 3)
 meshes = [NodePath("CollisionShape3D/Model")]
+face_front = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=96621098]
-transform = Transform3D(1, 0, 0, 0, 1, -1.6292068e-07, 0, 1.6292068e-07, 1, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_ukia6")
 
 [node name="Model" type="MeshInstance3D" parent="CollisionShape3D" index="0" unique_id=1746584584]
