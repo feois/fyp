@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b8dxj6j38ba7q" path="res://src/objects/industrial/industrial.tscn" id="1_6jjow"]
 [ext_resource type="Material" uid="uid://dohqnublhmulo" path="res://assets/Toon City Pack.tres" id="2_mwric"]
 [ext_resource type="Material" uid="uid://dssggixbfws7e" path="res://assets/window.tres" id="3_rcxwc"]
+[ext_resource type="Script" uid="uid://cotwtmdwxtt4r" path="res://src/objects/components/power.gd" id="4_mwric"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yjf2r"]
 points = PackedVector3Array(11.759358, 0, 10.620973, -9.855966, 0.00302868, -12.134074, -10.620973, -8.881784e-16, -11.759358, -3.9045944, 13.472961, 0.7804296, -12.105222, 0.5860872, 10.933353, 12.105222, 0.5860872, -10.933353, 8.97861, 9.9569, 8.97861, 8.97861, 9.9569, -8.97861, -8.97861, 9.958238, -8.97861, -8.97861, 9.958238, 8.97861, -9.855966, 0.00302868, 12.134074, 7.0287595, 2.930128, 12.105222, -12.496659, 0.5860872, -10.152925, 9.857872, 0.0033449004, -12.133496, 12.496659, 0.5860872, 10.152925, -10.150477, 0.5860872, -12.496659, 10.152925, 0.5860872, 12.496659, -10.150477, 0.5860872, 12.496659, 10.152925, 0.5860872, -12.496659, -3.9045944, 13.472961, -0.7804296, -12.496659, 0.5860872, 10.152925, 12.496659, 0.5860872, -10.152925, -12.133496, 0.0033449004, 9.857872, 12.133496, 0.0033449004, -9.857872, 2.7327268, 2.930128, 12.105222, -12.133496, 0.0033449004, -9.857872, 9.857872, 0.0033449004, 12.133496, -12.105222, 0.5860872, -10.933353, 10.933353, 0.5860872, 12.105222, -10.933353, 0.5860872, -12.105222, -10.933353, 0.5860872, 12.105222, 12.105222, 0.5860872, 10.933353)
@@ -64,13 +65,29 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gus44")
 
 [node name="Factory3" unique_id=1628805497 node_paths=PackedStringArray("meshes") instance=ExtResource("1_6jjow")]
-max_produce = 0
-base_size = Vector2i(4, 4)
+uneducated_production = 750
+educated_production = 1200
+high_educated_production = 1500
+standard_deviation = 0.1
+base_size = Vector2i(3, 3)
 meshes = [NodePath("CollisionShape3D/Model")]
 face_front = true
 
+[node name="Workplace" parent="." index="1" unique_id=1154254622]
+max_employee = 20
+uneducated_pay = 2000
+educated_pay = 3500
+high_educated_pay = 4000
+standard_deviation = 0.2
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1890144290]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_yjf2r")
 
 [node name="Model" type="MeshInstance3D" parent="CollisionShape3D" index="0" unique_id=650606157]
 mesh = SubResource("ArrayMesh_e3feo")
+
+[node name="Power" type="Node" parent="." index="3" unique_id=1262653067]
+script = ExtResource("4_mwric")
+usage = 25.0
+metadata/_custom_type_script = "uid://cotwtmdwxtt4r"

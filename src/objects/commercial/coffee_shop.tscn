@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dxb7lpep1is5y" path="res://src/objects/commercial/commercial.tscn" id="1_ag1ib"]
 [ext_resource type="Material" uid="uid://dohqnublhmulo" path="res://assets/Toon City Pack.tres" id="2_2oc2e"]
 [ext_resource type="Material" uid="uid://dssggixbfws7e" path="res://assets/window.tres" id="3_o8qtc"]
+[ext_resource type="Script" uid="uid://cotwtmdwxtt4r" path="res://src/objects/components/power.gd" id="4_o8qtc"]
+[ext_resource type="Script" uid="uid://ciepayqpp61k7" path="res://src/objects/components/water.gd" id="5_0g1cn"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0g1cn"]
 points = PackedVector3Array(-4.7067966, 0.3108394, 5.9704623, -6.3112264, 0.0058999998, -6.6015267, -6.3112264, 0.0058999998, 3.595915, -3.7372813, 5.675448, 1.4274185, 6.46436, 0.3108394, -6.8256598, 6.240227, 0.0058999998, 5.949927, 3.6533456, 5.6655726, -3.8212, 3.7156048, 5.7131004, 3.8212, -3.7243452, 5.6655726, -3.8212, -1.3989446, 5.6748157, 3.7657554, -6.5353594, 0.3108394, -6.8256598, 6.46436, 0.3108394, 6.17406, 6.240227, 0.0058999998, -6.6015267, -6.5353594, 0.3108394, 3.7359762, -4.0972757, 0.3108394, 6.17406, -6.1281643, 1.3262239, -3.372132, -6.1281643, 0.3108394, 4.7514205, -3.9572146, 0.0058999998, 5.949927, 3.843314, 5.4677997, -3.816975, -6.1281643, 1.3262239, 0.28244853, -5.1127205, 0.3108394, 5.7668643, -3.9476998, 5.294293, -3.8470252, -4.937644, 0.0058999998, 5.5567727, -6.3317623, 0.3108394, 4.345497, -5.9180727, 0.0058999998, 4.576344, 3.843314, 5.4677997, 3.7474406)
@@ -103,11 +105,22 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_31hb0")
 
 [node name="CoffeeShop" unique_id=1628805497 node_paths=PackedStringArray("meshes") instance=ExtResource("1_ag1ib")]
+uneducated_sales = 500
+educated_sales = 800
+high_educated_sales = 1000
+standard_deviation = 0.1
 base_size = Vector2i(3, 3)
 meshes = [NodePath("CollisionShape3D/Model"), NodePath("CollisionShape3D2/Teacup")]
 object_name = &"Coffee Shop"
 face_front = true
 face_left = true
+
+[node name="Workplace" parent="." index="1" unique_id=284232648]
+max_employee = 10
+uneducated_pay = 3000
+educated_pay = 4000
+high_educated_pay = 4500
+standard_deviation = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=2006965307]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -122,3 +135,12 @@ shape = SubResource("ConvexPolygonShape3D_8tbxs")
 
 [node name="Teacup" type="MeshInstance3D" parent="CollisionShape3D2" index="0" unique_id=2059624759]
 mesh = SubResource("ArrayMesh_s87xk")
+
+[node name="Power" type="Node" parent="." index="4" unique_id=244754895]
+script = ExtResource("4_o8qtc")
+usage = 10.0
+metadata/_custom_type_script = "uid://cotwtmdwxtt4r"
+
+[node name="Water" type="Node" parent="." index="5" unique_id=807581500]
+script = ExtResource("5_0g1cn")
+metadata/_custom_type_script = "uid://ciepayqpp61k7"

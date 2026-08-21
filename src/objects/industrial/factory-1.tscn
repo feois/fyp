@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b8dxj6j38ba7q" path="res://src/objects/industrial/industrial.tscn" id="1_nofq7"]
 [ext_resource type="Material" uid="uid://dohqnublhmulo" path="res://assets/Toon City Pack.tres" id="2_1eesc"]
 [ext_resource type="Material" uid="uid://dssggixbfws7e" path="res://assets/window.tres" id="3_xu5np"]
+[ext_resource type="Script" uid="uid://cotwtmdwxtt4r" path="res://src/objects/components/power.gd" id="4_1eesc"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ukia6"]
 points = PackedVector3Array(7.149476, 7.7491717, 12.550211, 1.2685945, 9.719393, 12.573691, -7.405288, 0, 12.931373, 7.5705, 0.025663862, -12.862542, 7.149476, 7.7491717, -12.550211, -7.405288, 0, -12.931373, 7.5705, 0.025663862, 12.862542, -7.8492208, 7.514742, 13.393482, -1.0998251, 9.775934, -12.724482, 7.611084, 7.0889072, -13.348668, -7.8492208, 7.514742, -13.393482, 7.611084, 7.0889072, 13.348668, -8.156375, 6.3079543, 13.488605, -1.0998251, 9.775934, 12.724482, 1.2685945, 9.719393, -12.573691, 4.2731366, 0, 12.928841, 4.2731366, 8.881784e-16, -12.928841)
@@ -66,14 +67,29 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jr7b8")
 
 [node name="Factory1" unique_id=1628805497 node_paths=PackedStringArray("meshes") instance=ExtResource("1_nofq7")]
-max_produce = 0
+uneducated_production = 1000
+educated_production = 1500
+high_educated_production = 2000
+standard_deviation = 0.3
 base_size = Vector2i(4, 3)
 meshes = [NodePath("CollisionShape3D/Model")]
 face_front = true
 
+[node name="Workplace" parent="." index="1" unique_id=1154254622]
+max_employee = 15
+uneducated_pay = 2500
+educated_pay = 3500
+high_educated_pay = 4500
+standard_deviation = 0.25
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=96621098]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-5.4639235e-09, 0, -0.125, 0, 0.125, 0, 0.125, 0, -5.4639235e-09, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_ukia6")
 
 [node name="Model" type="MeshInstance3D" parent="CollisionShape3D" index="0" unique_id=1746584584]
 mesh = SubResource("ArrayMesh_2y406")
+
+[node name="Power" type="Node" parent="." index="3" unique_id=498995586]
+script = ExtResource("4_1eesc")
+usage = 20.0
+metadata/_custom_type_script = "uid://cotwtmdwxtt4r"

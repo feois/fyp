@@ -28,3 +28,4 @@ surface_material_override/0 = ExtResource("5_ded6l")
 
 [node name="Graph" type="Node" parent="." index="2" unique_id=1332091576]
 script = ExtResource("7_mmj3e")
+main_road = true

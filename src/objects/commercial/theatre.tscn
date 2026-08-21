@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b8q3m17qcopmc" path="res://assets/commercial/cinema-poster-texture-C.png" id="6_0v7l0"]
 [ext_resource type="Texture2D" uid="uid://beme73anmx8ne" path="res://assets/commercial/subway-ad-texture.png" id="7_uygja"]
 [ext_resource type="Texture2D" uid="uid://dvalfil557as1" path="res://assets/commercial/cinema-texture.png" id="8_vrxls"]
+[ext_resource type="Script" uid="uid://cotwtmdwxtt4r" path="res://src/objects/components/power.gd" id="9_jo8mf"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kap8w"]
 points = PackedVector3Array(-4.4573245, 11.090327, -4.506353, 2.5413842, 0.39090443, 7.375066, 6.241766, 0.10398435, -6.146548, -6.2760787, 0.1773626, 6.1242585, 3.8343544, 16.430372, 1.4230462, -6.2955523, 0.15243907, -6.106417, -6.1528687, 7.175043, 6.013395, 6.4228277, 7.376566, -6.079398, -3.9259996, 16.430372, 1.4230462, 6.222856, 0.12818612, 6.158831, -6.1838837, 7.1700854, -5.9880486, -2.6330295, -0.1277523, 7.375066, 4.5986314, 11.082881, -4.4936213, 6.4228277, 7.376566, 6.081032, -4.4287686, 11.071303, 4.536255, 4.576118, 11.06867, 4.532632, 2.5413842, -0.1277523, 7.375066, -2.6330295, 0.39090443, 7.375066, -4.789948, 10.895471, -4.6011786, -4.7745795, 10.886581, 4.625406)
@@ -274,15 +275,31 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ksmqh")
 
 [node name="Theatre" unique_id=1628805497 node_paths=PackedStringArray("meshes") instance=ExtResource("1_ffjkc")]
+uneducated_sales = 500
+educated_sales = 550
+high_educated_sales = 600
+standard_deviation = 0.5
 base_size = Vector2i(3, 3)
 meshes = [NodePath("CollisionShape3D/Model")]
 object_name = &"Theater"
 face_front = true
 
+[node name="Workplace" parent="." index="1" unique_id=284232648]
+max_employee = 15
+uneducated_pay = 3000
+educated_pay = 3300
+high_educated_pay = 3500
+standard_deviation = 0.05
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1316204214]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_kap8w")
 
 [node name="Model" type="MeshInstance3D" parent="CollisionShape3D" index="0" unique_id=1617632456]
 instance_shader_parameters/selected_emission_strength = 0.0
 mesh = SubResource("ArrayMesh_sd57q")
+
+[node name="Power" type="Node" parent="." index="3" unique_id=21225501]
+script = ExtResource("9_jo8mf")
+usage = 15.0
+metadata/_custom_type_script = "uid://cotwtmdwxtt4r"

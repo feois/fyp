@@ -47,6 +47,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yiubf")
 
 [node name="Cottage" unique_id=1628805497 node_paths=PackedStringArray("meshes") instance=ExtResource("1_d2e7j")]
+capacity = 5
 base_size = Vector2i(4, 2)
 meshes = [NodePath("CollisionShape3D/Model")]
 object_name = &"Cottage"

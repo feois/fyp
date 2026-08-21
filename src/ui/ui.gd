@@ -73,6 +73,9 @@ func _process(_delta: float) -> void:
 		time.minute,
 	]
 	
+	%Population.text = str(world.agent_manager.agents.size())
+	%Money.text = "$ %d" % world.money
+	
 	if Input.is_action_just_pressed(&"Cancel"): cancel()
 
 

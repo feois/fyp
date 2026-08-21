@@ -73,6 +73,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_flwtt")
 
 [node name="Residential" unique_id=1628805497 node_paths=PackedStringArray("meshes") instance=ExtResource("1_hbqh3")]
+capacity = 30
 base_size = Vector2i(4, 4)
 meshes = [NodePath("CollisionShape3D/Model"), NodePath("CollisionShape3D2/Model"), NodePath("CollisionShape3D3/Model"), NodePath("CollisionShape3D4/Model")]
 object_name = &"Apartment"

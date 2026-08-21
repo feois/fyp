@@ -14,6 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://ckn47ieav0bvd" path="res://src/objects/power/wind_turbine.tscn" id="11_g3j30"]
 [ext_resource type="Texture2D" uid="uid://bni6myhf3crj8" path="res://src/objects/water/water.png" id="12_g3j30"]
 [ext_resource type="PackedScene" uid="uid://cbt8wjiiatcyi" path="res://src/objects/water/well.tscn" id="13_a7soy"]
+[ext_resource type="PackedScene" uid="uid://cakbcxc87cpx3" path="res://src/objects/industrial/factory-1.tscn" id="14_x1f1g"]
+[ext_resource type="PackedScene" uid="uid://coo4via7p7mcx" path="res://src/objects/residential/cottage.tscn" id="14_xowm4"]
+[ext_resource type="PackedScene" uid="uid://4umqnfnfvfkp" path="res://src/objects/industrial/factory-2.tscn" id="15_72t65"]
+[ext_resource type="PackedScene" uid="uid://dsqwxruwaj15p" path="res://src/objects/residential/apartment.tscn" id="15_eveok"]
+[ext_resource type="PackedScene" uid="uid://dpj12uwqmh88h" path="res://src/objects/industrial/factory-3.tscn" id="16_xowm4"]
+[ext_resource type="PackedScene" uid="uid://b5vt1qqm0u5fj" path="res://src/objects/commercial/coffee_shop.tscn" id="17_eveok"]
+[ext_resource type="PackedScene" uid="uid://cga1e5igoec2t" path="res://src/objects/commercial/fast_food.tscn" id="18_evl7j"]
+[ext_resource type="PackedScene" uid="uid://gv8245028mua" path="res://src/objects/commercial/hotel.tscn" id="19_6m1pf"]
+[ext_resource type="PackedScene" uid="uid://cmd1cdxdhrf2d" path="res://src/objects/commercial/theatre.tscn" id="20_ov5gv"]
 
 [sub_resource type="Resource" id="Resource_1hnva"]
 script = ExtResource("2_bs6l1")
@@ -47,6 +56,12 @@ metadata/_custom_type_script = "uid://ffacyillwqwi"
 
 [node name="World" parent="." unique_id=1331461221 node_paths=PackedStringArray("ui") instance=ExtResource("1_3msxb")]
 categories = Array[ExtResource("2_bs6l1")]([SubResource("Resource_1hnva"), SubResource("Resource_y2hwx"), SubResource("Resource_a7soy"), SubResource("Resource_aikvj")])
+residential_scenes = Array[PackedScene]([ExtResource("14_xowm4"), ExtResource("15_eveok")])
+industrial_scenes = Array[PackedScene]([ExtResource("14_x1f1g"), ExtResource("15_72t65"), ExtResource("16_xowm4")])
+commercial_scenes = Array[PackedScene]([ExtResource("17_eveok"), ExtResource("18_evl7j"), ExtResource("19_6m1pf"), ExtResource("20_ov5gv")])
+new_population = 50.0
+growth_rate = 3.0
+money = 10000
 ui = NodePath("../CanvasLayer/UI")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=60308129]

@@ -22,4 +22,6 @@ func hire() -> void:
 	if employees.size() < max_employee:
 		var employee := object.world.agent_manager.pop_jobless()
 		
-		employees.append(employee)
+		if employee:
+			employees.append(employee)
+			employee.job = self

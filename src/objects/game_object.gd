@@ -17,6 +17,7 @@ enum Rotation {
 @export_group("Object data")
 @export var object_name: StringName
 @export var object_icon: Texture2D
+@export_multiline var object_description: String
 @export var object_price: int
 @export_group("Face")
 @export var face_front := false
@@ -122,7 +123,7 @@ func update_transform() -> void:
 	
 	basis = Basis.from_euler(Vector3(0, deg_to_rad(r), 0)).scaled(s)
 	
-	tile_highlight.scale = Vector3(base_size.x, 1, base_size.y);
+	tile_highlight.scale = Vector3(base_size.x, 1, base_size.y)
 
 
 func preview_valid() -> void:

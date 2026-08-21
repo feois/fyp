@@ -14,8 +14,8 @@ size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 script = ExtResource("1_1yfbi")
 offset = Vector3(0, 0.5, 0)
-zoom = 3.0
-path = &"src/objects/residential/cottage"
+zoom = 6.0
+path = &"src/objects/temp"
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1936470156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -24,9 +24,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 61.24, 50, 61.24)
 projection = 1
 current = true
-size = 3.0
+size = 6.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=846605922]
 environment = SubResource("Environment_1yfbi")
 
 [node name="Cottage" parent="." unique_id=1628805497 instance=ExtResource("2_1yfbi")]
+process_mode = 4

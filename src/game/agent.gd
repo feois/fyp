@@ -23,4 +23,4 @@ func update_income() -> void:
 		EducationLevel.Normal: income = job.educated_pay
 		EducationLevel.High: income = job.high_educated_pay
 	
-	income = NormalDistribution.generate(income, job.standard_deviation) as int
+	income = NormalDistribution.generate(income, income * job.standard_deviation) as int

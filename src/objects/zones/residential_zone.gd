@@ -6,11 +6,12 @@ var residential: Residential
 
 
 func _ready() -> void:
-	residential = preload("res://src/objects/residential/cottage.tscn").instantiate()
+	super._ready()
+	if not is_preview: residential = world.residentials.pick_random()
 
 
 func process() -> void:
-	if residential and randf() < 0.1 * world.delta:
+	if residential and world.new_population > residential.capacity:
 		if find_valid_area(residential):
 			for x in range(residential.real_size().x):
 				for y in range(residential.real_size().y):

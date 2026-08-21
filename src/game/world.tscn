@@ -90,6 +90,8 @@ ambient_light_energy = 0.5
 [node name="World" type="Node3D" unique_id=1331461221]
 script = ExtResource("1_thycv")
 seconds_per_day = 10.0
+sales_tax = 0.05
+income_tax = 0.1
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=2142466188]
 unique_name_in_owner = true
@@ -170,6 +172,10 @@ mesh = SubResource("BoxMesh_f5g00")
 [node name="Inner" type="MeshInstance3D" parent="TileSelection" unique_id=655034310]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
 mesh = SubResource("BoxMesh_h5kay")
+
+[node name="Scenes" type="Node3D" parent="." unique_id=1334493091]
+process_mode = 4
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1839182601]
 environment = SubResource("Environment_yi6ot")

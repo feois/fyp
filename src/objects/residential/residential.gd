@@ -8,6 +8,8 @@ var agents: Array[Agent] = []
 
 
 func process() -> void:
+	if is_preview: return
+	
 	var p := world.new_population as int
 	
 	for i in range(mini(capacity - agents.size(), p)):

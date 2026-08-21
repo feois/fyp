@@ -51,6 +51,11 @@ func update() -> void:
 	_usage = usage
 
 
+func is_sufficient() -> bool:
+	var r := root() as Water
+	return r._group_usage <= r._group_supply
+
+
 static func to_str(water: float) -> String:
 	var L := water
 	var kL := L / 1000

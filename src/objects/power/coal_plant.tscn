@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cotwtmdwxtt4r" path="res://src/objects/components/power.gd" id="5_kc3pi"]
 [ext_resource type="PackedScene" uid="uid://cbjev8pypr6b6" path="res://src/objects/components/pollution.tscn" id="6_lhox8"]
 [ext_resource type="PackedScene" uid="uid://diixl3887stm4" path="res://src/objects/components/noise.tscn" id="7_rmmag"]
+[ext_resource type="PackedScene" uid="uid://upj1gq72mbc4" path="res://src/objects/components/education_effect.tscn" id="8_pkm7o"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hs4qe"]
 points = PackedVector3Array(-5.097168, 27.597069, -2.2882657, -3.3070998, 0.10795263, -9.013881, -3.5808392, 9.372818, -9.378809, 23.256283, 7.848905, -1.2781062, -2.4448, 2.926009, 18.794044, 22.961668, -3.5527137e-15, -5.6416216, -9.151286, -0.25045872, -0.26517105, 5.532997, 9.372818, 16.438538, 5.532997, -0.25045872, 16.438538, 20.217281, 9.370092, -6.342779, -6.7524815, 27.23192, -4.0752273, -3.5808392, 9.372818, 16.438538, -9.151286, 9.372818, -6.340004, 5.532997, 9.372818, -9.378809, 23.256283, -0.25318432, -1.2781062, -9.151286, 9.372818, -0.26517105, 4.521054, 2.7891884, 18.972263, -5.097168, 27.597069, -4.82199, 5.532997, -0.25045872, -9.378809, -3.3070998, 0.10795263, 16.138836, -7.1242275, 27.597069, -2.7961206, -8.859786, -3.5527137e-15, -6.1396585, 23.256283, 7.848905, -5.8349247, -4.58961, 27.597069, -2.7961206, 20.217281, 9.370092, -0.26517105, -4.58961, 27.597069, -4.3141346, -6.6166697, 27.597069, -2.2882657, -6.149143, 27.120789, -4.4930015, -7.1242275, 26.582943, -2.2882657)
@@ -106,3 +107,6 @@ radius = 20.0
 
 [node name="Noise" parent="." index="4" unique_id=504861077 instance=ExtResource("7_rmmag")]
 radius = 30.0
+
+[node name="EducationEffect" parent="." index="5" unique_id=1023712027 instance=ExtResource("8_pkm7o")]
+radius = 5.0
